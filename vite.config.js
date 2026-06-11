@@ -16,7 +16,7 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
     }),
     Components({
-      //配置样式配色 
+      //配置Elemt Plus默认样式配色 
       resolvers: [ElementPlusResolver({importStyle: "sass"})],
     }),
   ],
@@ -28,8 +28,12 @@ export default defineConfig({
   css: {
     preprocessorOptions:{
       scss: {
-        additionalData: `@use "@/styles/element/index.scss" as *;`
+        additionalData: `
+        @use "@/styles/element/index.scss" as *;
+        @use "@/styles/var.scss" as *;
+        `
+        
       }
     }
-  }
+  },
 })

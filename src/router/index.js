@@ -1,12 +1,10 @@
 import component from 'element-plus/es/components/tree-select/src/tree-select-option.mjs';
 import { createRouter, createWebHistory } from 'vue-router'
-const Layout = import('@/views/Layout/index.vue');
-const Login = import('@/views/Login/index.vue')
 
 const routes = [
   {
     path: '/',
-    component: Layout,
+    component:import('@/views/Layout/index.vue'),
     children: [
       {
         path: '',
@@ -21,7 +19,7 @@ const routes = [
 
   {
     path: '/login',
-    component: Login,
+    component: import('@/views/Login/index.vue'),
   },
 ]
 
