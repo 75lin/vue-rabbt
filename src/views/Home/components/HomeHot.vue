@@ -14,7 +14,7 @@ onMounted(()=> getHotList());
 </script>
 
 <template>
-    <HomePanel title="热销单品" subTitle="人气爆款">
+    <HomePanel title="人气推荐" subTitle="人气爆款">
       <ul class="goods-list">
         <li v-for="item in hotList" :key="item.id">
           <RouterLink to="/">

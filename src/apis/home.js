@@ -15,3 +15,7 @@ export function getHomeNewAPI(){
 export function getHomeHotAPI(){
    return httpInstance.get('/home/hot');
 }
+
+export function getHomeProductAPI(){
+   return httpInstance.get('/home/goods')
+}

@@ -2,11 +2,9 @@
 defineProps({
     title: {
         type: String,
-        default: '主标题',
     },
     subTitle: {
         type: String,
-        default: '副标题',
     }
 })
 </script>
