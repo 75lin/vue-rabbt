@@ -7,6 +7,7 @@ import HomeProduct from './components/HomeProduct.vue'
 </script>
 
 <template>
+  <!-- 首页二级内容展示区 -->
   <div class="container">
     <HomeCategory />
     <HomeBanner />

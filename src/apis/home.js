@@ -1,7 +1,9 @@
 import httpInstance from '@/utils/http'
 
-export function getBannerAPI(){
-   return httpInstance.get('/home/banner');
+export function getBannerAPI(distributionSite = 1){
+   return httpInstance.get('/home/banner',{
+      params:{ distributionSite }
+   });
 }
 
 export function getHomeNewAPI(){

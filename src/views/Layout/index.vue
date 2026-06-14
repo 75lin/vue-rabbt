@@ -1,10 +1,3 @@
-<template>
-    <LayoutNav />
-    <LayoutHeaderFixed />
-    <LayoutHeader />
-    <RouterView></RouterView>
-    <LayoutFooter />
-</template>
 <script setup>
 import LayoutNav from './components/LayoutNav.vue'
 import LayoutHeader from './components/LayoutHeader.vue'
@@ -18,6 +11,13 @@ const categoryStore = useCategoryStore()
 onMounted(()=>{
     categoryStore.getCategory();
 })
-
-
 </script>
+
+<template>
+    <!-- 首页布局 -->
+    <LayoutNav />
+    <LayoutHeaderFixed />
+    <LayoutHeader />
+    <RouterView></RouterView>
+    <LayoutFooter />
+</template>
