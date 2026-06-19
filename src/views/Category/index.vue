@@ -29,11 +29,12 @@ console.log('数据：',categoryData.value)
         </el-carousel>
       </div>
 
+      <!-- 二级分类导航 -->
       <div class="sub-list">
         <h3>全部分类</h3>
         <ul>
           <li v-for="item in categoryData.children" :key="item.id">
-            <RouterLink to="/">
+            <RouterLink :to="`/category/sub/${item.id}`">
               <img :src="item.picture"/>
               <p>{{ item.name }}</p>
             </RouterLink>
