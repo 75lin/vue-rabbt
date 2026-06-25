@@ -10,6 +10,7 @@ defineProps({
 </script>
 
 <template>
+    <!-- 面板组件复用 -->
     <div class="home-panel">
         <div class="container">
             <div class="head">

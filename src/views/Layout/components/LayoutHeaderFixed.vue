@@ -3,6 +3,8 @@ import { useScroll } from '@vueuse/core'
 import { useCategoryStore} from '@/stores/category.js'
 
 const categoryStore = useCategoryStore()
+
+//使用vueuse组件库中的useScroll获取页面滚动值
 const { x, y, isScrolling, arrivedState, directions } = useScroll(window)
 
 </script>

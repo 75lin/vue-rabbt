@@ -9,14 +9,15 @@ const categoryStore = useCategoryStore();
   <div class="home-category">
     <ul class="menu">
       <li v-for="category in categoryStore.categoryList" :key="category.id">
-        <RouterLink to="/">{{ category.name }}</RouterLink>
-        <RouterLink v-for="i in category.children.slice(0,2)" :key="i.id" to="/">{{ i.name }}</RouterLink>
+        <RouterLink :to="`/category/${category.id}`">{{ category.name }}</RouterLink>
+        <!-- 二级分类只展示前两个 -->
+        <RouterLink v-for="i in category.children.slice(0,2)" :key="i.id" :to="`/category/sub/${i.id}`">{{ i.name }}</RouterLink>
         <!-- 弹层layer位置 goods展示-->
         <div class="layer">
           <h4>分类推荐 <small>根据您的购买或浏览记录推荐</small></h4>
           <ul>
             <li v-for="i in category.goods" :key="i.id">
-              <RouterLink to="/">
+              <RouterLink :to="`/detail/${i.id}`">
                 <img alt="" :src="i.picture" />
                 <div class="info">
                   <p class="name ellipsis-2">

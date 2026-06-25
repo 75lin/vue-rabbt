@@ -15,7 +15,7 @@ export function getSubCategoryDataAPI(id){
 }
 
 /**
- * @description: 获取导航数据
+ * @description: 获取二级分类筛选数据
  * @data { 
      categoryId: 1005000 ,
      page: 1,

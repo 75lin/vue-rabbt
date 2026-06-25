@@ -3,6 +3,7 @@ import { useCategoryData } from './composables/useCategoryData';
 import { useBanner } from './composables/useBanner';
 import GoodsItem from '../Home/components/GoodsItem.vue';
 
+//将获取一级分类数据业务、获取banner业务分装成usexxx函数，在组件内组合使用
 const { categoryData } = useCategoryData();
 const { bannerList } = useBanner();
 
