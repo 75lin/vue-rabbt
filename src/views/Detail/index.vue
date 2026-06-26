@@ -2,6 +2,7 @@
 import { getDetailAPI } from '@/apis/detail';
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
+import DetailHot from './component/DetailHot.vue';
 
 const goods = ref({});
 const categories = ref([]);
@@ -126,17 +127,28 @@ onMounted(()=>getDetail(route.params.id));
             </div>
             <!-- 24热榜+专题推荐 -->
             <div class="goods-aside">
-
+                <detail-hot hotType="1"></detail-hot>
+                <detail-hot hotType="2"></detail-hot>
             </div>
           </div>
         </div>
       </div>
+    </div>
+    <div class="loading-img" v-else>
+      <img src="@/assets/images/loading.svg" />
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .xtx-goods-page {
+  .loading-img{
+    min-height: 600px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .goods-info {
     min-height: 600px;
     background: #fff;
