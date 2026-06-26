@@ -4,6 +4,7 @@ import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import DetailHot from './component/DetailHot.vue';
 import ImageShow from '@/component/imageView/ImageShow.vue';
+import { onBeforeRouteUpdate } from 'vue-router'
 
 const goods = ref({});
 const categories = ref([]);
@@ -16,6 +17,12 @@ const getDetail = async (id)=>{
 
 
 onMounted(()=>getDetail(route.params.id));
+
+// 目标:路由参数变化的时候 可以把分类数据接口重新发送
+onBeforeRouteUpdate((to) => {
+  // 存在问题：使用最新的路由参数请求最新的分类数据
+  getDetail(to.params.id)
+})
 
 </script>
 
@@ -65,7 +72,7 @@ onMounted(()=>getDetail(route.params.id));
                 </li>
                 <li>
                   <p>品牌信息</p>
-                  <p>{{ goods.brand.name }}</p>
+                  <p>{{ goods?.brand?.name ?? '暂无' }}</p>
                   <p><i class="iconfont icon-dynamic-filling"></i>品牌主页</p>
                 </li>
               </ul>
