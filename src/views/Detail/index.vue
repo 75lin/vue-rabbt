@@ -3,6 +3,7 @@ import { getDetailAPI } from '@/apis/detail';
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import DetailHot from './component/DetailHot.vue';
+import ImageShow from '@/component/imageView/ImageShow.vue';
 
 const goods = ref({});
 const categories = ref([]);
@@ -44,7 +45,7 @@ onMounted(()=>getDetail(route.params.id));
           <div class="goods-info">
             <div class="media">
               <!-- 图片预览区 -->
-
+              <ImageShow :imageList="goods.mainPictures"></ImageShow>
               <!-- 统计数量 -->
               <ul class="goods-sales">
                 <li>
@@ -148,6 +149,11 @@ onMounted(()=>getDetail(route.params.id));
     display: flex;
     justify-content: center;
     align-items: center;
+
+    img{
+      background: none;
+      
+    }
   }
   .goods-info {
     min-height: 600px;

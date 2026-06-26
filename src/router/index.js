@@ -34,6 +34,10 @@ const routes = [
     name: 'login',
     component: ()=>import('@/views/Login/index.vue'),
   },
+  {
+    path: '/image',
+    component: ()=>import('@/component/imageView/ImageShow.vue')
+  }
 ]
 
 const router = createRouter({
