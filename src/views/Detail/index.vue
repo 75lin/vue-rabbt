@@ -135,8 +135,8 @@ onBeforeRouteUpdate((to) => {
             </div>
             <!-- 24热榜+专题推荐 -->
             <div class="goods-aside">
-                <detail-hot hotType="1"></detail-hot>
-                <detail-hot hotType="2"></detail-hot>
+                <detail-hot :hotType="1"></detail-hot>
+                <detail-hot :hotType="2"></detail-hot>
             </div>
           </div>
         </div>

@@ -1,8 +1,13 @@
+<script setup>
+import { RouterLink } from 'vue-router';
+
+</script>
+
 <template>
     <nav class="app-topnav">
         <div class="container">
             <ul >
-                <template v-if="true">
+                <template v-if="false">
                     <li>
                         <a href='#'>
                             <i class='iconfont icon-user'></i> 测试账号 
@@ -16,7 +21,7 @@
                             placement="bottom-start" 
                             cancel-button-text="取消">
                             <template #reference>
-                                <a href="#">退出登录</a>
+                                <router-link to="/login">退出登录</router-link>
                             </template>
                         </el-popconfirm>
                     </li>
@@ -25,7 +30,7 @@
                 </template>
 
                 <template v-else>
-                    <li><a href="javascript:;">请先登录</a></li>
+                    <li><a href="javascript:;"><router-link to="/login">请先登录</router-link></a></li>
                     <li><a href="javascript:;">帮助中心</a></li>
                     <li><a href="javascript:;">关于我们</a></li>
                 </template>

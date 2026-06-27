@@ -29,7 +29,6 @@ const productList = ref([]);
 const getProductList = async ()=>{
   const res = await getHomeProductAPI();
   productList.value = res.result;
-  console.log(productList.value)
 }
 onMounted(()=> getProductList());
 </script>
