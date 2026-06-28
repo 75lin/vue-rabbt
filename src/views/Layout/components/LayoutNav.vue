@@ -1,27 +1,37 @@
 <script setup>
 import { RouterLink } from 'vue-router';
+import { useUserStore } from '@/stores/user';
+import { useRouter } from 'vue-router';
 
+const userStore = useUserStore();
+const router = useRouter();
+const Logout = ()=>{
+  userStore.cleanUserInfo();
+  router.replace({path: '/'})
+}
 </script>
 
 <template>
     <nav class="app-topnav">
         <div class="container">
             <ul >
-                <template v-if="false">
+                <template v-if="userStore.userInfo.token">
                     <li>
                         <a href='#'>
-                            <i class='iconfont icon-user'></i> 测试账号 
+                            <i class='iconfont icon-user'></i>{{ userStore.userInfo.account }}
+                            <img :src="userStore.userInfo.avatar" />
                         </a>
                     </li>
                     <li>
                         <el-popconfirm 
                             title="确认要退出码？" 
+                            @confirm="Logout"
                             confirm-button-text="确认" 
-                            confirm-button-type="danger"
+                            confirm-button-type="primary"
                             placement="bottom-start" 
                             cancel-button-text="取消">
                             <template #reference>
-                                <router-link to="/login">退出登录</router-link>
+                                <a href="javascript:;">退出登录</a>
                             </template>
                         </el-popconfirm>
                     </li>
@@ -52,6 +62,15 @@ import { RouterLink } from 'vue-router';
         color: #cdcdcd;
         line-height: 1;
         display: inline-block;
+
+        img{
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+          border: #333 solid 1px;
+          background-color: #333;
+          overflow: hidden;
+        }
 
         i {
           font-size: 14px;

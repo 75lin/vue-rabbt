@@ -1,6 +1,10 @@
 <script setup>
 import {ref,useTemplateRef} from 'vue';
+import { useRouter } from 'vue-router';
+import { useUserStore } from '@/stores/user';
 
+const router = useRouter();
+const userStore = useUserStore();
 const userInfo = ref({
     account: '',
     password: '',
@@ -27,16 +31,26 @@ const rules = {
 
 //表单统一校验
 const form = useTemplateRef('formElement');
-function LoginHandler(){
-    //调用实例方法
-    form.value.validate((valid)=>{
-        //只用当所有校验规则都为true时，valid才为true
-        console.log(valid);
-        
-        if(valid){
-            //登录业务逻辑
-        }
-    })
+
+//登录业务逻辑
+const loginFunc = async ()=>{
+    try{
+        const { account, password} = userInfo.value;
+        userStore.getUserInfo({account,password})
+        ElMessage({ type: 'success', message: '登录成功' })
+        router.replace({ path: '/' })
+    }catch(error){
+        ElMessage({ type: 'error', message: error?.response?.data?.message ??'登录失败' })
+    }
+}
+
+// 点击登录按钮触发校验
+const LoginHandler = async () => {
+  const valid = await form.value.validate()
+  if (valid) {
+    // 仅校验全部通过才执行登录请求
+    await loginFunc()
+  }
 }
 
 </script>
