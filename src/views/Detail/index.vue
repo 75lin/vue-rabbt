@@ -4,6 +4,7 @@ import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import DetailHot from './component/DetailHot.vue';
 import ImageShow from '@/component/imageView/ImageShow.vue';
+import XtxSKU from '@/component/XtxSku/index.vue'
 import { onBeforeRouteUpdate } from 'vue-router'
 
 const goods = ref({});
@@ -24,6 +25,9 @@ onBeforeRouteUpdate((to) => {
   getDetail(to.params.id)
 })
 
+const getSkuObj = (SkuObj)=>{
+  console.log(SkuObj)
+}
 </script>
 
 <template>
@@ -101,7 +105,7 @@ onBeforeRouteUpdate((to) => {
                 </dl>
               </div>
               <!-- sku组件 -->
-
+              <XtxSKU :goods="goods" @change="getSkuObj"></XtxSKU>
               <!-- 数据组件 -->
 
               <!-- 按钮组件 -->
