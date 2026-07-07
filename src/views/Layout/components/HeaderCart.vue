@@ -3,14 +3,12 @@ import { useCartStore } from '@/stores/cart';
 import { ref } from 'vue';
 
 const cartStore = useCartStore();
-
-const total = ref({})
 </script>
 
 <template>
   <div class="cart">
     <a class="curr" href="javascript:;">
-      <i class="iconfont icon-cart"></i><em>{{ cartStore.cartList.length }}</em>
+      <i class="iconfont icon-cart"></i><em>{{ cartStore.allCount }}</em>
     </a>
     <div class="layer">
       <div class="list">
@@ -29,16 +27,16 @@ const total = ref({})
               <p class="count">x{{ i.count }}</p>
             </div>
           </RouterLink>
-          <i class="iconfont icon-close-new" @click="store.delCart(i.skuId)"></i>
+          <i class="iconfont icon-close-new" @click="cartStore.deleteCart(i.skuId)"></i>
         </div>
        
       </div>
       <div class="foot">
         <div class="total">
-          <p>共 10 件商品</p>
-          <p>&yen; 100.00 </p>
+          <p>共 {{cartStore.allCount}} 件商品</p>
+          <p>&yen; {{cartStore.allPrice.toFixed(2)}} </p>
         </div>
-        <el-button size="large" type="primary" >去购物车结算</el-button>
+        <el-button size="large" type="primary" @click="$router.push('/cartlist')" >去购物车结算</el-button>
       </div>
     </div>
 </div>

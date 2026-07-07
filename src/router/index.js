@@ -1,3 +1,4 @@
+import component from 'element-plus/es/components/tree-select/src/tree-select-option.mjs'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
@@ -26,6 +27,10 @@ const routes = [
         name: 'detail',
         component: ()=>import('@/views/Detail/index.vue')
       },
+      {
+        path: '/cartlist',
+        component: ()=>import('@/views/CartList/index.vue')
+      }
     ]
   },
 
@@ -37,7 +42,7 @@ const routes = [
   {
     path: '/image',
     component: ()=>import('@/component/imageView/ImageShow.vue')
-  }
+  },
 ]
 
 const router = createRouter({
