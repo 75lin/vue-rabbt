@@ -99,6 +99,10 @@ const getSkuObj = (pathMap)=>{
         const skuIds = pathMap[key]
         // 以skuId作为匹配项去goods.value.skus数组中找
         const skuObj = goods.value.skus.find(item => item.id === skuIds[0])
+        skuObj.specsText = skuObj.specs.reduce((specsText,item,index,array)=>{
+              if(index === array.length -1) return specsText + `${item.name}:${item.valueName}`
+              else return specsText + `${item.name}:${item.valueName} `
+        },'')
         emit('change',skuObj)
     }
 }
@@ -115,7 +119,6 @@ watchEffect(()=>{
               }))
           }))
     };
-    console.log(goods.value)
     const pathMap = getPathMap(goods.value);
     //初始化更新按钮状态
     initDisabledState(goods.value.specs, pathMap)
