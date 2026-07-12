@@ -37,8 +37,12 @@ const loginFunc = async ()=>{
     try{
         const { account, password} = userInfo.value;
         userStore.getUserInfo({account,password})
-        ElMessage({ type: 'success', message: '登录成功' })
-        router.replace({ path: '/' })
+        if(userStore.userInfo.account){
+            ElMessage({ type: 'success', message: '登录成功' })
+            router.replace({ path: '/' })
+        }else{
+          ElMessage({ type: 'error', message:'登录失败: 账号或密码错误'})
+        }
     }catch(error){
         ElMessage({ type: 'error', message: error?.response?.data?.message ??'登录失败' })
     }

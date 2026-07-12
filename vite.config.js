@@ -23,9 +23,18 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://pcapi-xiaotuxian-front-devtest.itheima.net',
+        target: 'https://pcapi-xiaotuxian-front-devtest.itheima.net',
         changeOrigin: true,
+        secure: false,
         rewrite: (path) => path.replace(/^\/api/, ''),
+        configure: (proxy) => {
+          proxy.on('proxyReq', (proxyReq, req) => {
+            console.log('[vite proxy]', req.method, req.url, {
+              targetPath: proxyReq.path,
+              hasAuthorization: Boolean(req.headers.authorization),
+            })
+          })
+        },
       },
     },
   },
