@@ -1,7 +1,7 @@
 <script setup>
 import {ref,useTemplateRef} from 'vue';
 import { useRouter } from 'vue-router';
-import { useUserStore } from '@/stores/user';
+import { useUserStore } from '@/stores/userStore';
 
 const router = useRouter();
 const userStore = useUserStore();
@@ -36,8 +36,8 @@ const form = useTemplateRef('formElement');
 const loginFunc = async ()=>{
     try{
         const { account, password} = userInfo.value;
-        userStore.getUserInfo({account,password})
-        if(userStore.userInfo.account){
+        await userStore.getUserInfo({account,password})
+        if(userStore.userInfo?.account){
             ElMessage({ type: 'success', message: '登录成功' })
             router.replace({ path: '/' })
         }else{

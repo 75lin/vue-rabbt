@@ -6,7 +6,7 @@ import DetailHot from './component/DetailHot.vue';
 import ImageShow from '@/component/imageView/ImageShow.vue';
 import XtxSKU from '@/component/XtxSku/index.vue'
 import { onBeforeRouteUpdate } from 'vue-router'
-import { useCartStore } from '@/stores/cart.js';
+import { useCartStore } from '@/stores/cartStore.js';
 import { ElMessage } from 'element-plus';
 
 const goods = ref({});

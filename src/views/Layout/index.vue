@@ -4,7 +4,7 @@ import LayoutHeader from './components/LayoutHeader.vue'
 import LayoutFooter from './components/LayoutFooter.vue'
 import LayoutHeaderFixed from './components/LayoutHeaderFixed.vue'
 import { onMounted} from 'vue'
-import { useCategoryStore} from '@/stores/category.js'
+import { useCategoryStore} from '@/stores/categoryStore.js'
 
 const categoryStore = useCategoryStore()
 
