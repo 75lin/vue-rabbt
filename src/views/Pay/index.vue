@@ -1,17 +1,44 @@
 <script setup>
-const payInfo = {}
+import { getPayOrderAPI} from '@/apis/order'
+import { onMounted, ref } from 'vue';
+import { useRoute } from 'vue-router';
+import { useCountDown } from '@/composables/useCountdown';
+
+const payInfo = ref({});
+const route = useRoute();
+const invalid = ref(false)
+const { formatTime, start} = useCountDown();
+
+const getPayOrderInfo =async ()=>{
+    const res = await getPayOrderAPI(route.query.id);
+    payInfo.value = res.result;
+
+    if(payInfo.value.countdown > 0)
+        start(payInfo.value.countdown);
+    else invalid.value = true;
+}
+
+onMounted(getPayOrderInfo);
+
+
+// 支付地址
+const baseURL = 'http://pcapi-xiaotuxian-front-devtest.itheima.net/'
+const backURL = 'http://127.0.0.1:5173/paycallback'  //结果展示页
+const redirectUrl = encodeURIComponent(backURL)
+const payUrl = `${baseURL}pay/aliPay?orderId=${route.query.id}&redirect=${redirectUrl}`
+
 </script>
 
 
 <template>
   <div class="xtx-pay-page">
-    <div class="container">
+    <div class="container" v-if="!invalid">
       <!-- 付款信息 -->
-      <div class="pay-info">
+      <div class="pay-info" >
         <span class="icon iconfont icon-queren2"></span>
         <div class="tip">
           <p>订单提交成功！请尽快完成支付。</p>
-          <p>支付还剩 <span>24分30秒</span>, 超时后将取消订单</p>
+          <p>支付还剩 <span>{{ formatTime }}</span>, 超时后将取消订单</p>
         </div>
         <div class="amount">
           <span>应付总额：</span>
@@ -35,6 +62,9 @@ const payInfo = {}
           <a class="btn" href="javascript:;">交通银行</a>
         </div>
       </div>
+    </div>
+    <div class="pay-info" v-else>
+        <p>订单已失效</p>
     </div>
   </div>
 </template>

@@ -38,6 +38,10 @@ const routes = [
       {
         path: '/pay',
         component: ()=>import('@/views/Pay/index.vue')
+      },
+      {
+        path: '/paycallback',
+        component: ()=>import('@/views/Pay/PayResult.vue')
       }
     ]
   },
