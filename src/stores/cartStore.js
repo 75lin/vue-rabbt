@@ -99,6 +99,7 @@ export const useCartStore = defineStore('cart',()=>{
         deleteCart,
         mergeCart,
         clearCart,
+        updateCartList,
         toggleSelecte,
         allSelect,
         allCount,

@@ -6,6 +6,7 @@ const cartStore = useCartStore();
 const toggleSelecte =(item, selected)=>{
     cartStore.toggleSelecte(item.skuId,selected)
 }
+// setInterval(async ()=>cartStore.updateCartList(),3000)
 </script>
 
 <template>
@@ -80,7 +81,7 @@ const toggleSelecte =(item, selected)=>{
           <span class="red">¥{{cartStore.selectedPrice.toFixed(2)}} </span>
         </div>
         <div class="total">
-          <el-button size="large" type="primary" >下单结算</el-button>
+          <el-button size="large" type="primary" @click="$router.push('/checkout')" >下单结算</el-button>
         </div>
       </div>
     </div>
