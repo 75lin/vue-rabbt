@@ -64,7 +64,7 @@ const payUrl = `${baseURL}pay/aliPay?orderId=${route.query.id}&redirect=${redire
       </div>
     </div>
     <div class="pay-info" v-else>
-        <p>订单已失效</p>
+        <el-empty description="订单已失效" />
     </div>
   </div>
 </template>

@@ -1,4 +1,3 @@
-import component from 'element-plus/es/components/tree-select/src/tree-select-option.mjs'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
@@ -42,6 +41,24 @@ const routes = [
       {
         path: '/paycallback',
         component: ()=>import('@/views/Pay/PayResult.vue')
+      },
+      {
+        path: '/member',
+        component: ()=>import('@/views/Member/index.vue'),
+        children: [
+          {
+            path: '',
+            component: ()=>import('@/views/Member/components/UserInfo.vue')
+          },
+          {
+            path: 'user',
+            component: ()=>import('@/views/Member/components/UserInfo.vue')
+          },
+          {
+            path: 'order',
+            component: ()=>import('@/views/Member/components/UserOrder.vue')
+          }
+        ]
       }
     ]
   },

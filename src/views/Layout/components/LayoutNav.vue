@@ -1,9 +1,10 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import { useUserStore } from '@/stores/userStore';
-import { useRouter } from 'vue-router';
+import { useRouter,useRoute } from 'vue-router';
 
 const userStore = useUserStore();
+const route = useRoute();
 const router = useRouter();
 const Logout = ()=>{
   userStore.cleanUserInfo();
@@ -36,7 +37,7 @@ const Logout = ()=>{
                         </el-popconfirm>
                     </li>
                     <li><a href="javascript:;">我的订单</a></li>
-                    <li><a href="javascript:;">会员中心</a></li>
+                    <li><a href="javascript:;" @click="()=>$router.push('/member')">会员中心</a></li>
                 </template>
 
                 <template v-else>
